@@ -1239,3 +1239,208 @@ Processing by PlacesController#index as HTML
 Completed 200 OK in 3560ms (Views: 3545.3ms | ActiveRecord: 1.4ms)
 
 
+Started GET "/" for 10.0.2.2 at 2019-09-13 11:20:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PlacesController#index as HTML
+  Rendering places/index.html.erb within layouts/application
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" ORDER BY "places"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."place_id" = $1[0m  [["place_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."place_id" = $1[0m  [["place_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered places/index.html.erb within layouts/application (1776.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2298ms (Views: 2221.2ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/places/1" for 10.0.2.2 at 2019-09-13 11:20:23 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPlace Load (0.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering places/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."place_id" = $1[0m  [["place_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."place_id" = $1[0m  [["place_id", 1]]
+  Rendered places/show.html.erb within layouts/application (249.7ms)
+Completed 200 OK in 510ms (Views: 494.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/places/1/comments" for 10.0.2.2 at 2019-09-13 11:21:00 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sbhdoo6aXo2MOTRst613anxAEVla9Wjx4emrP6tKRGrnVa+lruqZSlLeYn/6mHQYn+eyDpgkrCRJo48TpGJL4Q==", "comment"=>{"message"=>"test", "rating"=>"2_stars"}, "commit"=>"Add a review", "place_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("message", "rating", "user_id", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["message", "test"], ["rating", "2_stars"], ["user_id", 1], ["place_id", 1], ["created_at", "2019-09-13 11:21:00.940336"], ["updated_at", "2019-09-13 11:21:00.940336"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notification_mailer/comment_added.html.erb within layouts/mailer
+  Rendered notification_mailer/comment_added.html.erb within layouts/mailer (0.5ms)
+  Rendering notification_mailer/comment_added.text.erb within layouts/mailer
+  Rendered notification_mailer/comment_added.text.erb within layouts/mailer (0.4ms)
+NotificationMailer#comment_added: processed outbound mail in 327.7ms
+Sent mail to austinsdodd0806@gmail.com (23.2ms)
+Date: Fri, 13 Sep 2019 11:21:01 +0000
+From: no-reply@nomsterapp.com
+To: austinsdodd0806@gmail.com
+Message-ID: <5d7b7b9daed24_22db3fd50aa139106607f@vagrant-ubuntu-trusty-64.mail>
+Subject: A comment has been added to United States Holocaust Museum
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b7b9daabdc_22db3fd50aa13910659b5";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b7b9daabdc_22db3fd50aa13910659b5
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey there! 
+
+Congrats. A comment has been added to your place on Nomster. Check it out http://localhost:3030/places/1!
+
+Enjoy,
+Amy
+
+----==_mimepart_5d7b7b9daabdc_22db3fd50aa13910659b5
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <p>Hey there!</p>
+<p>
+	Congrats! <b>A comment has been added to your place on Nomster.</b> Check it out <a href="http://localhost:3030/places/1">here</a>.
+</p>
+
+Enjoy,<br />
+Amy
+  </body>
+</html>
+
+----==_mimepart_5d7b7b9daabdc_22db3fd50aa13910659b5--
+
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3030/places/1
+Completed 302 Found in 804ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/places/1" for 10.0.2.2 at 2019-09-13 11:21:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPlace Load (0.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering places/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."place_id" = $1[0m  [["place_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPhoto Load (0.9ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."place_id" = $1[0m  [["place_id", 1]]
+  Rendered places/show.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 311ms (Views: 292.9ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/places/1/comments" for 10.0.2.2 at 2019-09-13 11:23:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GUvRqJqCnbUC5HyLOC6DRMq2IPbU1Jp8pscFIUmBB5ZAp4UfPgjdBKCb5Qr+DgE5XlWGULtnFwbMz7GlZL4eOw==", "comment"=>{"message"=>"test", "rating"=>"3_stars"}, "commit"=>"Add a review", "place_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.4ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("message", "rating", "user_id", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["message", "test"], ["rating", "3_stars"], ["user_id", 1], ["place_id", 1], ["created_at", "2019-09-13 11:23:17.711486"], ["updated_at", "2019-09-13 11:23:17.711486"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notification_mailer/comment_added.html.erb within layouts/mailer
+  Rendered notification_mailer/comment_added.html.erb within layouts/mailer (0.4ms)
+  Rendering notification_mailer/comment_added.text.erb within layouts/mailer
+  Rendered notification_mailer/comment_added.text.erb within layouts/mailer (0.5ms)
+NotificationMailer#comment_added: processed outbound mail in 174.3ms
+Sent mail to austinsdodd0806@gmail.com (5.3ms)
+Date: Fri, 13 Sep 2019 11:23:17 +0000
+From: no-reply@nomsterapp.com
+To: austinsdodd0806@gmail.com
+Message-ID: <5d7b7c25d90f4_22db3fd50aa13ce4662e0@vagrant-ubuntu-trusty-64.mail>
+Subject: A comment has been added to United States Holocaust Museum
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b7c25d7dbb_22db3fd50aa13ce466110";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b7c25d7dbb_22db3fd50aa13ce466110
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey there! 
+
+Congrats. A comment has been added to your place on Nomster. Check it out http://localhost:3030/places/1!
+
+Enjoy,
+Amy
+
+----==_mimepart_5d7b7c25d7dbb_22db3fd50aa13ce466110
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <p>Hey there!</p>
+<p>
+	Congrats! <b>A comment has been added to your place on Nomster.</b> Check it out <a href="http://localhost:3030/places/1">here</a>.
+</p>
+
+Enjoy,<br />
+Amy
+  </body>
+</html>
+
+----==_mimepart_5d7b7c25d7dbb_22db3fd50aa13ce466110--
+
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3030/places/1
+Completed 302 Found in 194ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/places/1" for 10.0.2.2 at 2019-09-13 11:23:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering places/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."place_id" = $1[0m  [["place_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."place_id" = $1[0m  [["place_id", 1]]
+  Rendered places/show.html.erb within layouts/application (47.5ms)
+Completed 200 OK in 334ms (Views: 318.1ms | ActiveRecord: 1.8ms)
+
+
