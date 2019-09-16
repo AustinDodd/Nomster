@@ -40,7 +40,7 @@
 			<div class="col-12 col-md-9">
 				<h1><%= link_to place.name, place_path(place) %></h1>
 				<i><%= place.address %></i><br /><br />
-				<p><%= place.description %></p>< /
+				<p><%= place.description %></p><br />
 
 				<% if place.user.present? %>
 					<small>- <%= place.user.email %></small>
