@@ -1,10 +1,10 @@
 @import "bootstrap";
 @import "font-awesome";
-@import url('https://fonts.googleapis.com/css?family=Paytone+One|Quicksand');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
 
 body {
-	background: image_url('ravenna.png');
-	font-family: 'Quicksand', sans-serif;
+	background: image_url('crossword.png');
+	font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
 }
 
 .clear {
@@ -15,20 +15,20 @@ title{
   color: yellow;
 }
 
-.navbar .navbar-inverse {
+.navbar {
   background: image_url('cartographer.png');
   box-shadow: 0px 1px 3px #2a2a2a;
   margin-bottom: 0;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #E3E85A;
-  font-family: 'chunkfiveregular', sans-serif;
-  font-size: 26px;
+  color: #41bad8;
+  font-family: 'chunkfiveroman', sans-serif;
+  font-size:26px;
 }
 
 .navbar-inverse .navbar-brand:hover {
-	color: #41bad8;
+	color: #E3E85A;
 }
 
 
@@ -38,11 +38,6 @@ title{
   border-radius: 3px;
   padding: 2px 8px 2px 8px;
 }
-
-
-
-
-
 
 
 
@@ -73,7 +68,7 @@ a {
 }
 
 a:hover {
-	color: #41bad8;
+	color: black;
 	text-decoration: none;
 }
 
@@ -231,4 +226,25 @@ hr {
 .user-info {
   padding-top: 2%;
   padding-left: 20px;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote p {
+  display: inline;
 }
